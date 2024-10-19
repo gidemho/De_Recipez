@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Sxhema({
+const UserSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true
@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Sxhema({
     password: {
         type: String,
         required: true
-    }
+    },
     created_at: {
         type: Date,
         default: Date.now
