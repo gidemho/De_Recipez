@@ -25,3 +25,4 @@ app.listen(PORT, () => {
 
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth', authRoutes);
+app.use('/api/recipes', recipeRoutes);
