@@ -18,7 +18,11 @@ const Header = () => {
       </nav>
 
 
-      <button className='p-3 bg-purple-500 text-white rounded-lg'> Login </button>
+      <button className='p-3 bg-purple-500 text-white rounded-lg'> 
+        <Link to="/login">
+        Log In
+        </Link>
+        </button>
       </div>
     </header>
   )
