@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import RecipeList from '../components/RecipeList';
 import SearchBar from '../components/SearchBar';
+import Header from '../components/Header'
 import dummyData from '../dummyData'
 
 
@@ -16,7 +17,7 @@ function HomePage() {
 
     return (
         <div>
-            <h1>De_Recipez</h1>
+          <Header/>
             <SearchBar />
             {/* <RecipeList recipes={recipes} /> */}
             <RecipeList recipes={dummyData}/>
