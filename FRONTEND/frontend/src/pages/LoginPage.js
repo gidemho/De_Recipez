@@ -20,7 +20,7 @@ function LoginPage() {
     return (
         <div>
             <h2>Login</h2>
-            <from onSubmit={handleLogin}>
+            <form onSubmit={handleLogin}>
                 <input
                 type="email"
                 placeholder="Email"
@@ -34,7 +34,7 @@ function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">Login</button>
-            </from>
+            </form>
         </div>
     );
 }
