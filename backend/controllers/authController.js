@@ -18,7 +18,7 @@ exports.registerUser = async (req, res) => {
         await newUser.save();
 
         res.status(201).json({
-            "message": "User signed in successfully"
+            "message": "User signed up successfully"
         });
     } catch (error) {
         res.status(500).json({ message: 'Server error when signing up' });
@@ -31,6 +31,7 @@ exports.loginUser = async (req, res) => {
 
     try {
         const user = await User.findOne({ email });
+        console.log(user)
         if (!user) {
             return res.status(400).json({ message: 'Invalid credentials' });
         }

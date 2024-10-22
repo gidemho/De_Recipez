@@ -1,20 +1,19 @@
 const express = require('express');
-// require('dotenv').config()
+require('dotenv').config()
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const recipeRoutes = require('./routes/recipeRoutes')
-
-
+const cors = require("cors")
 connectDB();
 
 //Initialize the Express app
 const app = express();
-
-//Middleware to parse incoming JSON request
 app.use(express.json());
+app.use(express.urlencoded({extended: false}))
+app.use(cors())
 
 app.get('/', (req, res) => {
-    res.send('welcome to De_Recipez!');
+    res.send('De Recipez API is live!');
 });
 
 
