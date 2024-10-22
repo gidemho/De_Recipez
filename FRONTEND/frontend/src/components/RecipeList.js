@@ -2,7 +2,7 @@ import React from 'react';
 
 function RecipeList({ recipes }) {
     return (
-        <dive>
+        <div>
             <h3>Recipes</h3>
             <ul>
                 {recipes.map(recipe => (
@@ -11,7 +11,7 @@ function RecipeList({ recipes }) {
                     </li>
                 ))}
             </ul>
-        </dive>
+        </div>
     );
 }
 
