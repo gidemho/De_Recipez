@@ -24,7 +24,7 @@ function SignUpPage() {
         }
 
         try {
-            const response = await axios.post('/api/auth/signup', { username, email, password });
+            const response = await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
             toast.success('User registered successfully!');
             setUsername('');
             setEmail('');
@@ -85,14 +85,14 @@ function SignUpPage() {
                     >
                         {isLoading ? 'Signing Up...' : 'Sign Up'}
                     </button>
-                    <Link to="/signup" className='text-center py-3 mx-36'>New user? </Link>
+                    <Link to="/login" className='text-center py-3 mx-36'>Log in here </Link>
                 </form>
             </div>
 
            
             <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
             
-        </div>
+        </div> <Link to="/signup" className='text-center py-10 mx-36'>New user? </Link>
         </>
     );
 }
