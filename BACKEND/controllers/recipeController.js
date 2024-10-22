@@ -2,8 +2,8 @@ const Recipe = require('../models/Recipe');
 
 exports.getRecipes = async (req, res) => {
     try {
-        const recipes = awit Recipe.find();
-        res.json(recipes);
+        const recipes = await Recipe.find({});
+        res.status(201).json(recipes);
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }

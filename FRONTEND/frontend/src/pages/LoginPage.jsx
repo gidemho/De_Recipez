@@ -1,24 +1,26 @@
-import react, { useState } from 'react';
-import axios, { Axios } from 'axios';
-import { response } from 'express';
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function SignUpPage() {
+function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate('');
 
-    const handleSignUp = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        axios.post('/api/auth/signup', { email, password})
+        axios.post('/api/auth/login', { email, password })
         .then(response => {
-            alert('User registered successfully');
+            localStorage.setItem('token', response.data.token);
+            navigate('/');
         })
         .catch(error => console.error(error));
     };
 
     return (
         <div>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSignUp}>
+            <h2>Login</h2>
+            <form onSubmit={handleLogin}>
                 <input
                 type="email"
                 placeholder="Email"
@@ -27,14 +29,14 @@ function SignUpPage() {
                 />
                 <input
                 type="password"
-                placeholder="Password"
+                placeholder="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit">Sign Up</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     );
 }
 
-export default SignUpPage;
+export default LoginPage;

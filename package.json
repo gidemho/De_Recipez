@@ -16,6 +16,7 @@
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.2",
+    "prop-types": "^15.8.1",
     "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
