@@ -7,7 +7,7 @@ function LoginPage() {
     const [paaword, setPassword] = useState('');
     const navigate = useNavigate('');
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         axios.post('/api/auth/login', { email, password })
         .then(response => {
