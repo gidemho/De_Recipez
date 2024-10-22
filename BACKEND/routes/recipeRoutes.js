@@ -4,12 +4,12 @@ const { protect } = require('../middlewares/authMiddleware');
 
 const recipeRoutes = express.Router();
 
-recipeRoutes.get('/', getRecipes);
+recipeRoutes.get('/api/recipes/all', getRecipes);
 
-recipeRoutes.post('/:id', protect, createRecipe);
+recipeRoutes.post('/api/recipe/add', protect, createRecipe);
 
-recipeRoutes.put('/:id', protect, updateRecipe);
+recipeRoutes.put('/api/recipe/:id', protect, updateRecipe);
 
-recipeRoutes.delete('/:id', protect, deleteRecipe);
+recipeRoutes.delete('/api/recipe/:id', protect, deleteRecipe);
 
 module.exports = recipeRoutes;

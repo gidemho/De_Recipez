@@ -20,7 +20,7 @@ const RecipeSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: false
     },
     created_at: {
         type: Date,

@@ -5,23 +5,24 @@ const generateToken = require('../utils/generateToken');
 
 exports.registerUser = async (req, res) => {
     const { username, email, password } = req.body;
-
+    console.log(username, email, password)
     try {
         let user = await User.findOne({ email });
         if (user) {
-            return res.status(400).json({ message: 'User already exists'});
+            return res.status(400).json({ message: 'User already exists' });
         }
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({ username, email, password: hashedPassword });
+        await newUser.save();
 
-        user = new User({ username, email, password: hashedPassword });
-        await user.save();
-
-        const token = generateToken(user._id);
-
-        res.status(201).json({ token });
+        res.status(201).json({
+            "message": "User signed in successfully"
+        });
     } catch (error) {
-        res.status(500).json({message: 'Server error'});
+        res.status(500).json({ message: 'Server error when signing up' });
+        console.error(error)
     }
 };
 
@@ -39,10 +40,12 @@ exports.loginUser = async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        const toen = generateToken(user._id);
+        const token = generateToken(user._id);
 
-        res.json({ token });
+        res.status(200).json({
+            "message": "Logged in successfully", token
+        });
     } catch (error) {
-        res.status(500).json({ message: 'Server error '});
+        res.status(500).json({ message: 'Server error when logging in' });
     }
 };
