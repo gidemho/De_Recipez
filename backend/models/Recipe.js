@@ -22,6 +22,10 @@ const RecipeSchema = new mongoose.Schema({
         ref: 'User',
         required: false
     },
+    imageURL: {
+        type: String, 
+        required: true
+    },
     created_at: {
         type: Date,
         default: Date.now

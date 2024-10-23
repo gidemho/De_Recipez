@@ -4,11 +4,12 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 
 const NewRecipeForm = ({ state, setState }) => {
+    const token = localStorage.getItem("token")
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState(['']);
     const [steps, setSteps] = useState(['']);
-
+    const [imageURL, setImageURL] = useState('')
     const handleIngredientChange = (index, value) => {
         const newIngredients = [...ingredients];
         newIngredients[index] = value;
@@ -26,11 +27,20 @@ const NewRecipeForm = ({ state, setState }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const recipeData = { title, description, ingredients, steps };
-        try {
-            axios.post("http://localhost:5000/api/recipe/add", recipeData).then(response => {
 
-                if (response.data == 201) {
+        const recipeData = { title, description, ingredients, steps, imageURL };
+        try {
+            toast("Submitting....")
+            const options = {
+                method: 'POST',
+                url: 'http://localhost:5000/api/recipe/add',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                data: recipeData
+            }
+            axios.request(options).then(response => {
+                if (response.status == 201) {
                     toast.success("Successfully added product")
 
                 }
@@ -45,18 +55,18 @@ const NewRecipeForm = ({ state, setState }) => {
 
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
             <ToastContainer />
-            <div className="relative bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <div className="relative bg-white p-8 rounded-lg shadow-lg w-full max-w-md max-h-[80vh] overflow-y-auto">
 
                 <button
                     className="absolute top-2 right-3 text-gray-500 hover:text-gray-700"
-                    onClick={() => {setState(false)}}
+                    onClick={() => { setState(false) }}
                 >
                     <FaTimes className='text-3xl text-lighter text-red' />
                 </button>
 
                 <h2 className="text-2xl font-semibold mb-4 text-center">Create New Recipe</h2>
 
-                <form onSubmit={handleSubmit} className="space-y-4 overflow-y-scroll">
+                <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                         type="text"
                         placeholder="Title"
@@ -116,10 +126,21 @@ const NewRecipeForm = ({ state, setState }) => {
                             + Add another step
                         </button>
                     </div>
+                    <input
+                        type="text"
+                        placeholder="Recipe image URL"
+                        className="w-full p-3 border border-gray-300 rounded"
+                        value={imageURL}
+                        onChange={(e) => setImageURL(e.target.value)}
+                        required
+                    />
+
 
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+                        className="w-full bg-blue-600 text-white py-3 rounded-lg
+                         hover:bg-blue-700 transition duration-300"
+                        onClick={handleSubmit}
                     >
                         Submit Recipe
                     </button>

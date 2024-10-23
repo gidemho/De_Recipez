@@ -3,7 +3,7 @@ const Recipe = require('../models/Recipe');
 exports.getRecipes = async (req, res) => {
     try {
         const recipes = await Recipe.find({});
-        res.status(201).json(recipes)
+        res.status(200).json(recipes)
     } catch (error) {
         res.status(500).json({ message: 'Server error' })
         console.log(error)
@@ -11,21 +11,23 @@ exports.getRecipes = async (req, res) => {
 }
 
 exports.createRecipe = async (req, res) => {
-    const { title, description, ingredients, steps } = req.body;
-
+    const { title, description, ingredients, steps, imageURL } = req.body;
+  
     try {
         const newRecipe = new Recipe({
             title,
             description,
             ingredients,
             steps,
-            user: req.user._id
+            user: req.user._id, 
+            imageURL
         });
 
         const recipe = await newRecipe.save();
         res.status(201).json(recipe);
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
+        console.error(error)
     }
 };
 

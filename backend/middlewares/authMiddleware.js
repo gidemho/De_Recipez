@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-
+require("dotenv").config()
 exports.protect = async (req, res, next) => {
     let token;
-
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         try {
             token = req.headers.authorization.split(' ')[1];
