@@ -1,20 +1,11 @@
 import React from 'react';
+import Header from './Header';
+import Footer from './Footer';
 
 function AboutPage() {
     return (
         <div>
-            <header className="bg-white shadow-md p-4">
-                <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    <h1 className="text-2xl font-bold text-gray-900">De_Recipez</h1>
-                    <nav className="space-x-4">
-                        <a href="/" className="text-blue-500 hover:text-blue-700">Home</a>
-                        <a href="/about" className="text-blue-500 hover:text-blue-700">About</a>
-                        <a href="/recipes" className="text-blue-500 hover:text-blue-700">Recipes</a>
-                        <a href="/contact" className="text-blue-500 hover:text-blue-700">Contact</a>
-                    </nav>
-                </div>
-            </header>
-
+            <Header/>
             <section className="max-w-4xl mx-auto p-8">
                 <h2 className="text-4xl font-bold text-center mb-6">About Us</h2>
                 <p className="text-lg text-gray-700 mb-6">
@@ -34,9 +25,7 @@ function AboutPage() {
                 </p>
             </section>
 
-            <footer className="bg-gray-100 text-center p-4 mt-8">
-                <p className="text-gray-600">© 2024 De_Recipez. All rights reserved.</p>
-            </footer>
+           <Footer/>
         </div>
     );
 }

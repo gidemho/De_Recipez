@@ -15,11 +15,12 @@ function LoginPage() {
 
         axios.post('http://localhost:5000/api/auth/login', { email, password })
             .then(response => {
+                console.log(response)
                 localStorage.setItem('token', response.data.token);
                 toast.success('Login successful!', response.data);
-                setTimeout(() => {
-                    navigate('/recipes')
-                }, 7000)
+                // setTimeout(() => {
+                //     navigate('/recipes')
+                // }, 10000)
             })
 
             .catch(error => {
@@ -56,6 +57,7 @@ function LoginPage() {
                         <button
                             type="submit"
                             className="w-full p-3 bg-purple-600 text-white rounded-lg hover:bg-purple-400 transition duration-300"
+                            onClick={handleLogin}
                         >
                             Login
                         </button>

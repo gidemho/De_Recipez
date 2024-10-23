@@ -48,5 +48,6 @@ exports.loginUser = async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({ message: 'Server error when logging in' });
+        console.error(error)
     }
 };
