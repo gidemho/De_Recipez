@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import Recipes from './pages/Recipes';
+import AboutPage from './components/AboutPage';
 // import ResetPasswordPage from './pages/ResetPasswordPage';
 
 function App() {
@@ -11,11 +12,12 @@ function App() {
         <div>
             <BrowserRouter>
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<HomePage/>} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignUpPage />} />
                  {/* <Route path="/reset-paaword" element={<ResetPasswordPage />} /> */}
                 <Route path="/recipes" element={<Recipes/>}/>
+                <Route path="/about-us" element={<AboutPage/>}/>
 
             </Routes>
             </BrowserRouter>

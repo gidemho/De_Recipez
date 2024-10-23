@@ -18,7 +18,7 @@ exports.registerUser = async (req, res) => {
         await newUser.save();
 
         res.status(201).json({
-            "message": "User signed in successfully"
+            "message": "User signed up successfully"
         });
     } catch (error) {
         res.status(500).json({ message: 'Server error when signing up' });
@@ -31,6 +31,7 @@ exports.loginUser = async (req, res) => {
 
     try {
         const user = await User.findOne({ email });
+        console.log(user)
         if (!user) {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
@@ -40,12 +41,13 @@ exports.loginUser = async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        const token = generateToken(user._id);
-
+        const token = generateToken(user._id, user.username);
+    
         res.status(200).json({
             "message": "Logged in successfully", token
         });
     } catch (error) {
         res.status(500).json({ message: 'Server error when logging in' });
+        console.error(error)
     }
 };

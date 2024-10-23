@@ -10,9 +10,9 @@ function SearchBar() {
   };
 
   return (
-    <form className="m-auto px-28 py-5 flex justify-center border-3"> 
+    <form className="m-auto px-28 py-5 flex justify-center"> 
       <input
-        className="outline-none border-3 border-neutral-900 text-neutral-900"  
+        className="outline-none border-2text-neutral-900 p-2"
         type="text"
         placeholder="Search recipes"
         value={searchTerm}

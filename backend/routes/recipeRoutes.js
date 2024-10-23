@@ -4,7 +4,7 @@ const { protect } = require('../middlewares/authMiddleware');
 
 const recipeRoutes = express.Router();
 
-recipeRoutes.get('/api/recipes/all', getRecipes);
+recipeRoutes.get('/api/recipes/all', protect, getRecipes);
 
 recipeRoutes.post('/api/recipe/add', protect, createRecipe);
 

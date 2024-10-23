@@ -1,7 +1,7 @@
 const RecipeCard = ({ recipeItem }) => {
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-            {/* <img className="w-full" src={recipeItem.imageUrl} alt={recipeItem.title} /> */}
+        <div className="max-w-sm w-4/5 rounded overflow-hidden shadow-lg">
+            <img className="w-full aspect-square" src={recipeItem.imageURL} alt={recipeItem.title} />
             <div className="px-6 py-4">
                 <div className="font-light text-xl mb-2">{recipeItem.title}</div>
                 <p className="text-gray-700 text-base">
