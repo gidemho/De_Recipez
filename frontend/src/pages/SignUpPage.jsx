@@ -24,7 +24,7 @@ function SignUpPage() {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+            const response = await axios.post('https://de-recipez.onrender.com/api/auth/register', { username, email, password });
             toast.success('User registered successfully!');
             setUsername('');
             setEmail('');

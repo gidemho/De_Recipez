@@ -33,7 +33,7 @@ const NewRecipeForm = ({ state, setState }) => {
             toast("Submitting....")
             const options = {
                 method: 'POST',
-                url: 'http://localhost:5000/api/recipe/add',
+                url: 'https://de-recipez.onrender.com/api/recipe/add',
                 headers: {
                     'Authorization': `Bearer ${token}`
                 },

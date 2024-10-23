@@ -13,7 +13,7 @@ function LoginPage() {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:5000/api/auth/login', { email, password })
+        axios.post('https://de-recipez.onrender.com/api/auth/login', { email, password })
             .then(response => {
                 console.log(response)
                 localStorage.setItem('token', response.data.token);

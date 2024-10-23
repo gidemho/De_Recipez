@@ -16,7 +16,7 @@ const Recipes = () => {
     const fetchRecipes = async () => {
       try {
         const options = {
-          url: 'http://localhost:5000/api/recipes/all',
+          url: 'https://de-recipez.onrender.com/api/recipes/all',
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
