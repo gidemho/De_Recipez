@@ -19,7 +19,7 @@ const Header = () => {
     toast.info("Successfully logged out!")
     setTimeout(() => {
       navigate('/login')
-    }, 5000)
+    }, 2000)
   }
   return (
     <header className='shadow-md flex p-2 w-full relative'>
